@@ -52,7 +52,7 @@ app.get('/index', function(req, res) {
 
   var token = req.session.token;
 
-  axios.get('http://localhost:3000/CRUD/AllUser',{ headers: {"Content-Type": "application/json" ,"auth-token" : token}}).then(function(response) {
+  axios.get('https://cq-assignment.herokuapp.com/CRUD/AllUser',{ headers: {"Content-Type": "application/json" ,"auth-token" : token}}).then(function(response) {
     res.render('index', {users: response.data.Users});
 
   })
@@ -83,7 +83,7 @@ app.get('/UserProfile', function(req, res) {
 
   var token = req.session.token;
 
-  axios.get('http://localhost:3000/CRUD/UserInfo',{ headers: {"Content-Type": "application/json" ,"auth-token" : token}}).then(function(response) {
+  axios.get('https://cq-assignment.herokuapp.com/CRUD/UserInfo',{ headers: {"Content-Type": "application/json" ,"auth-token" : token}}).then(function(response) {
     res.render('UserProfile', {Users: response.data.user});
   })
   .catch(function(err) {
@@ -103,7 +103,7 @@ app.get('/update_user/:userId', function(req, res) {
 
   var token = req.session.token;
 
-  var url = 'http://localhost:3000/CRUD/UserInfo/'+req.params.userId;
+  var url = 'https://cq-assignment.herokuapp.com/CRUD/UserInfo/'+req.params.userId;
 
 axios.get(url, { headers: {"Content-Type": "application/json" ,"auth-token" : token}})
 .then(function(response) {
