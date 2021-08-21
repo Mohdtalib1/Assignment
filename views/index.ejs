@@ -1,0 +1,57 @@
+<%-include('include/_header')%>
+
+<main id="site-main">
+  <div class="container">
+    <form class="" action="/index" method="post">
+      <div class="box-nav d-flex justify-between logout">
+      <button type="submit" class="login_button1" name="button">Logout</button>
+      </div>
+    </form>
+
+   <div class="box-nav d-flex justify-between">
+     <a href="/add_user" class="border-shadow add_user">
+       <span class="text-gradient">
+         New User<i class="fas fa-user"></i>
+       </span>
+     </a>
+   </div>
+
+
+    <form class="" action="/" method="post">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Name</th>
+            <th>@Email</th>
+            <th>Phone</th>
+            <th>gender</th>
+            <th>Bio</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<users.length; i++){ %>
+          <tr>
+            <td><%= users[i].name %></td>
+            <td><%= users[i].email %></td>
+            <td><%= users[i].phone %></td>
+            <td><%= users[i].gender %></td>
+            <td><%= users[i].bio %></td>
+            <td>
+              <a href="/update_user/<%= users[i]._id %>" class="btn border-shadow update">
+                <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+              </a>
+              <a class="btn border-shadow delete" data-id=<%= users[i]._id %>>
+                <span class="text-gradient"><i class="fas fa-times"></i></span>
+              </a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </form>
+
+  </div>
+</main>
+
+<%-include('include/_footer')%>
